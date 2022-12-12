@@ -16,6 +16,7 @@ import { DebtService } from "../debt.service";
                 <td>{{debt.name}}</td>
                 <td>{{debt.reason}}</td>
                 <td>{{debt.amount}}</td>
+                <td><button (click)="remove(debt.id)">wis</button></td>
             </tr>
         </table>
     `,
@@ -27,4 +28,8 @@ export class ListComponent{
     constructor(private debtService:DebtService){}
 
     data = this.debtService.get_data();
+
+    public remove(id:number){
+        this.debtService.remove_data(id);
+    }
 }

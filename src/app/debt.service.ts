@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { findIndex } from 'rxjs';
 
 @Injectable()
 export class DebtService {
@@ -14,7 +15,11 @@ export class DebtService {
   public add_data(name: string, reason: string, amount: number) {
     this.$id++;
     this.$data.push({id:this.$id, name, reason, amount });
-    console.log(this.$data);
+  }
+
+  public remove_data(value:number){
+    let index = this.$data.findIndex((element) => element.id == value);
+    this.$data.splice(index, 1);
   }
 
   public get_total() {
