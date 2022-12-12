@@ -5,14 +5,16 @@ export class DebtService {
   constructor() {}
 
   $data = new Array();
-  
+  $id:number = 0;  
 
   public get_data() {
     return this.$data;
   }
 
   public add_data(name: string, reason: string, amount: number) {
-    this.$data.push({ name, reason, amount });
+    this.$id++;
+    this.$data.push({id:this.$id, name, reason, amount });
+    console.log(this.$data);
   }
 
   public get_total() {
