@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { NgModel } from "@angular/forms";
 import { DebtService } from "../debt.service";
+import { TotalComponent } from "../total-component/total.component";
 
 @Component({
     selector: 'app-input',
@@ -22,6 +22,5 @@ export class InputComponent{
 
     onClick(name:string, reason:string, amount:number){
         this.debtService.add_data(name, reason, amount);
-        this.debtService.update_total();
     }
 }

@@ -1,11 +1,11 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { DebtService } from "../debt.service";
 
 @Component({
     selector: 'app-total',
     template: `
         <h2>total</h2>
-        <p>Totaal bedrag is: {{total}}</p>
+        <p>Totaal bedrag is: {{show_total()}}</p>
     `,
     styles: [`
     
@@ -14,5 +14,7 @@ import { DebtService } from "../debt.service";
 export class TotalComponent{
     constructor(private debtService:DebtService){}
 
-    total = this.debtService.total;
+    public show_total(){
+        return this.debtService.get_total();
+    }
 }

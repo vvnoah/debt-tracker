@@ -1,30 +1,25 @@
 import { Injectable } from '@angular/core';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DebtService {
+  constructor() {}
 
-  constructor() { }
+  $data = new Array();
+  
 
-  data = new Array();
-  total:number = 0;
-
-  public get_data(){
-    return this.data;
+  public get_data() {
+    return this.$data;
   }
 
-  public add_data(name:string, reason:string, amount:number){
-    this.data.push({name, reason, amount});
-    console.log(this.data);
+  public add_data(name: string, reason: string, amount: number) {
+    this.$data.push({ name, reason, amount });
   }
 
-  public update_total(){
-    this.total = 0;
-    this.data.forEach(element => {
-      this.total += element.amount; 
+  public get_total() {
+    let total:number = 0;
+    this.$data.forEach(element => {
+      total += element.amount;
     });
-    console.log(this.total);
+    return total;
   }
 }
